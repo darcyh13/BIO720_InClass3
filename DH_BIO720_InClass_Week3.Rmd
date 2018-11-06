@@ -1,0 +1,67 @@
+---
+title: "inclass3_bio720"
+output: html_document
+---
+
+```{r}
+
+dll_data = read.csv("http://datadryad.org/bitstream/handle/10255/dryad.8377/dll.csv", header=TRUE)
+
+summary(dll_data)
+head(dll_data)
+tail(dll_data)
+
+is.na(dll_data)
+anyNA(dll_data)
+sum(is.na(dll_data))
+
+mean(dll_data$femur)
+dll_data <- na.omit(dll_data)
+
+duplicated(dll_data)
+anyDuplicated(dll_data)
+
+dll_data_wt <- dll_data[dll_data$genotype == "wt", ]
+
+levels(dll_data_wt$genotype)
+
+dll_data_Dll <- subset(dll_data, select =c("genotype", "line", "temp", "SCT"))
+
+
+matchedset <- dll_data$line %in% c("line-sam", "line-1")
+sum(matchedset)
+
+line_str <- as.character(dll_data$line)
+
+line_names <- substr(line_str, 
+                     start = 6, stop= 1000000L )
+
+line_names3 <- gsub(pattern = "line-",
+                    replacement = "",
+                    x = line_str)
+
+str(dll_data$temp)
+
+temp_as_factor <- factor(dll_data$temp,labels = c("LowTemp", "HighTemp"))
+
+
+ifelse(dll_data$temp == "25", "LowTemp", "Hightemp")
+
+head(order(dll_data$SCT))
+
+tail(order(dll_data$SCT))
+
+dll_data_sorted <- dll_data[order(dll_data$SCT),]
+
+dll_data_sorted <- dll_data[order(dll_data$tibia),]
+
+
+
+dll_data_sorted <- dll_data[order(dll_data$tibia, decreasing = TRUE),]
+
+
+
+
+```
+
+
