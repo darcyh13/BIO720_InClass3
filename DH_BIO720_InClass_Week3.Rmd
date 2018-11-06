@@ -59,7 +59,7 @@ dll_data_sorted <- dll_data[order(dll_data$tibia),]
 
 dll_data_sorted <- dll_data[order(dll_data$tibia, decreasing = TRUE),]
 
-
+dll_data_sorted <- dll_data[order(dll_data$SCT, dll_data$temp),]
 
 
 ```
